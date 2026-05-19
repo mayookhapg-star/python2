@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#home">{{ name }}</a>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Hello, I am</p>
+                <h1>{{ name }}</h1>
+                <p class="role">{{ role }}</p>
+                <p class="intro">
+                    I build simple, reliable web applications with Django and clean frontend code.
+                    This portfolio runs locally and is ready for your own details.
+                </p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#projects">View Projects</a>
+                    <a class="button secondary" href="#contact">Contact Me</a>
+                </div>
+            </div>
+            <div class="profile-panel" aria-label="Profile summary">
+                <div class="avatar">YN</div>
+                <p>Available for internships, freelance work, and Django projects.</p>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="section-heading">
+                <p class="eyebrow">About</p>
+                <h2>A focused developer who enjoys practical web apps.</h2>
+            </div>
+            <p class="section-copy">
+                Replace this text with your own introduction, education, experience, and goals.
+                Keep it short, clear, and friendly so visitors quickly understand what you do.
+            </p>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="section-heading">
+                <p class="eyebrow">Skills</p>
+                <h2>Tools I use</h2>
+            </div>
+            <div class="skills-list">
+                {% for skill in skills %}
+                    <span>{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="section-heading">
+                <p class="eyebrow">Projects</p>
+                <h2>Selected work</h2>
+            </div>
+            <div class="project-grid">
+                {% for project in projects %}
+                    <article class="project-card">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <span>{{ project.tech }}</span>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="section-heading">
+                <p class="eyebrow">Contact</p>
+                <h2>Let us build something useful.</h2>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:you@example.com">you@example.com</a>
+                <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> {{ name }}. Built with Django.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
